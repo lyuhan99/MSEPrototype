@@ -1,27 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Pragma" name="Pragma" content="no-cache">
-<title>MSE Prototype</title>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Pragma" name="Pragma" content="no-cache">
+    <title>MSE Prototype</title>
+
+    <!-- Bootstrap -->
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Bootstrap -->
+
+
+
+
+    <!---CSS-->
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            position: relative;
+            background-color: #3b3e42;
+            background-image: url('img/Clue1.png');
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .next-btn-wrapper {
+            position: relative;
+            top: 70vh;
+            left: 41.75vw;
+            max-width: 20vw;
+            height: auto;
+            background: transparent;
+        }
+
+        .next-btn{
+            position:relative;
+            border-radius: 2vw;
+            width:100%;
+        }
+
+    </style>
 
 
 </head>
 
 <body>
-    <h1>This is the page for clue 1</h1>
+    <div class="container-fluid">
+        <div class="next-btn-wrapper">
+            <button type="button" class="next-btn btn btn-light rounded-pill">Next</button>
+        </div>
+    </div>
 
+
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+    <!-- Script -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            console.log("Webpage ready");
+            $('.next-btn').click(function () {
+                window.location.href = "sampling1.html"
+            });
+        });
+    </script>
 
 </body>
 
-
-<script type="text/javascript">
-
-
-
-</script>
-
 </html>
-

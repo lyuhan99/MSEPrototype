@@ -43,10 +43,10 @@
 
         .clue-found-img {
             text-align: center;
-            width:100%;
+            width: 100%;
         }
 
-        .modal-content{
+        .modal-content {
             background: transparent;
         }
 
@@ -94,11 +94,11 @@
 <body>
     <div class="container-fluid">
         <div class="clue1-wrapper">
-            <button type="button" class="btn btn-danger cluebtn" id="Clue1" data-toggle="modal"
-                data-target="#clue1Modal"></button>
+            <button type="button" class="btn btn-danger cluebtn" id="Clue1"></button>
         </div>
         <div class="clue2-wrapper">
-            <button type="button" class="btn btn-secondary cluebtn" id="Clue2"></button>
+            <button type="button" class="btn btn-secondary cluebtn" id="Clue2" data-toggle="modal"
+                data-target="#clue2Modal"></button>
         </div>
         <div class="clue3-wrapper">
             <button type="button" class="btn btn-warning cluebtn" id="Clue3"></button>
@@ -109,12 +109,12 @@
     </div>
 
 
-    <!-- Modal for Clue 1 -->
-    <div class="modal fade no-b" id="clue1Modal" tabindex="-1" role="dialog" aria-labelledby="clue1Modallabel"
+    <!-- Modal for Clue 2 -->
+    <div class="modal fade no-b" id="clue2Modal" tabindex="-1" role="dialog" aria-labelledby="clue2Modallabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered no-b" role="document">
             <div class="modal-content no-b">
-                <img class="clue-found-img" id="clue1img" src="img/cluefoundimg.png"></img>
+                <img class="clue-found-img" id="clue2img" src="img/clue2foundimg.png"></img>
             </div>
         </div>
     </div>
@@ -137,9 +137,9 @@
         $(document).ready(function () {
             console.log("Webpage ready");
 
-            $('#clue1img').click(function () {
-                window.location.href = "clue1.html"
-                
+            $('#clue2img').click(function () {
+                window.location.href = "clue2.html"
+
             });
 
         });
