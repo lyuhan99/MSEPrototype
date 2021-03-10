@@ -1,34 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Pragma" name="Pragma" content="no-cache">
-<title>MSE Prototype</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Pragma" name="Pragma" content="no-cache">
+    <title>MSE Prototype</title>
 
-<!-- Bootstrap -->
-<base target="_top">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Bootstrap -->
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Bootstrap -->
 
-<!-- Bootstrap -->
+
+    <!-- JQuey -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- JQuery -->
+
+    <!---CSS-->
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background-color: #2c4fab;
+            background-image: url('floorplan.jpg');
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .instruction-box {
+            position: absolute;
+            top: 4.5vh;
+            left: 20vw;
+            background-color: #2c4fab;
+            width: 30vw;
+            height: auto;
+        }
+
+        .clue1-wrapper {
+            position: absolute;
+            top: 50vh;
+            left: 30vw;
+            background: transparent;
+        }
+
+        .clue2-wrapper {
+            position: absolute;
+            top: 25vh;
+            left: 45vw;
+            background: transparent;
+        }
+
+        .clue3-wrapper {
+            position: absolute;
+            top: 70vh;
+            left: 50vw;
+            background: transparent;
+        }
+
+        .clue4-wrapper {
+            position: absolute;
+            top: 45vh;
+            left: 70vw;
+            background: transparent;
+
+        }
+
+        .cluebtn,
+        .cluebtn:hover {
+            width: 3vw;
+            height: 3vh;
+            background: transparent;
+            border: none;
+        }
+    </style>
+
 
 </head>
 
 <body>
-<h1>Hello World</h1>
-<a href="second-page.html"><h2>Go to the next page</h2></a>
+    <div class="container-fluid">
+        <div class="instruction-box">
+            <div class="row">
+                <h1 class="text-white">Find the Clues</h1>
+            </div>
+            <div class="row">
+                <p class="text-white">Click around the map to see what you can find.</p>
+            </div>
+        </div>
+        <div class="clue1-wrapper">
+            <button type="button" class="btn btn-danger cluebtn" id="Clue1"></button>
+        </div>
+        <div class="clue2-wrapper">
+            <button type="button" class="btn btn-secondary cluebtn" id="Clue2"></button>
+        </div>
+        <div class="clue3-wrapper">
+            <button type="button" class="btn btn-warning cluebtn" id="Clue3"></button>
+        </div>
+        <div class="clue4-wrapper">
+            <button type="button" class="btn btn-success cluebtn" id="Clue4"></button>
+        </div>
+        <!-- <div class="row justify-content-center">
+            <h1>Click around to find clues</h1>
+        </div> -->
+        <!-- <div class="row justify-content-center">
+            <div class="floorplan-wrapper">
+                <button type="button" class="btn btn-dark">Dark</button>
+                <img class="floorplan-img" src="floorplan.jpg" alt="floorplan">
+            </div>
+        </div> -->
+    </div>
 
+
+
+    <!-- Script -->
+    <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            console.log("Webpage ready");
+
+            $('#Clue1').click(function () {
+                window.location.href = "clue1.html";
+            });
+            
+            $('#Clue2').click(function () {
+                window.location.href = "clue2.html";
+            });
+            
+            $('#Clue3').click(function () {
+                window.location.href = "clue3.html";
+            });
+            
+            $('#Clue4').click(function () {
+                window.location.href = "clue4.html";
+            });
+        });
+    </script>
 
 </body>
 
-
-<script type="text/javascript">
-
-
-
-</script>
-
 </html>
-
