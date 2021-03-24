@@ -25,14 +25,23 @@
         body {
             position: relative;
             background-color: #3b3e42;
-            background-image: url('img/combined.PNG');
             background-size: auto 100%;
             background-repeat: no-repeat;
             background-position: center;
         }
 
-        .modal-content{
+        .clue-found-img {
+            /* text-align: center; */
+            width: 100%;
+        }
+
+        .modal-content {
             background-color: #3b3e42;
+        }
+
+        .modal-dialog {
+            max-width: 70vw;
+            /* New width for default modal */
         }
 
         .select-btn {
@@ -69,10 +78,9 @@
             background: transparent;
         }
 
-        .next-btn{
+        .next-btn {
             border-radius: 2vw;
         }
-
     </style>
 
 
@@ -105,7 +113,8 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <div class="row justify-content-center">
+                    <img class="clue-found-img" id="correctimg"></img>
+                    <!-- <div class="row justify-content-center">
                         <h1 class="text-success">Your answer is correct!</h1>
                     </div>
                     <div class="row justify-content-center">
@@ -113,7 +122,7 @@
                     </div>
                     <div class="row justify-content-center mx-3 mt-4">
                         <button type="button" class="next-btn btn btn-light btn-block">Try Again</button>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -156,23 +165,49 @@
         $(document).ready(function () {
             console.log("Webpage ready");
 
+            var firstClueNo = window.localStorage.getItem("firstClue");
+            var secondClueNo = window.localStorage.getItem("secondClue");
+
+            var bgImgURL = "url('img/Combi" + firstClueNo + secondClueNo + ".png')";
+            document.body.style.backgroundImage = bgImgURL;
+
             $('#a-btn').click(function () {
-                $("#wrongModal").modal("show");
+                if (firstClueNo == "B" && secondClueNo == "D") { //Diving suit - B and D
+                    $("#correctModal").modal("show");
+                    var correctImgURL = "img/Final" + firstClueNo + secondClueNo + ".png";
+                    document.getElementById("correctimg").src = correctImgURL;
+                } else {
+                    $("#wrongModal").modal("show");
+                }
             });
 
-            $('#b-btn').click(function () {
-                $("#wrongModal").modal("show");  
+            $('#b-btn').click(function () { //Lightbulb
+                $("#wrongModal").modal("show");
             });
 
             $('#c-btn').click(function () {
-                $("#wrongModal").modal("show");
+                if (firstClueNo == "A" && secondClueNo == "B") { //Pipes - A and B
+                    $("#correctModal").modal("show");
+                    var correctImgURL = "img/Final" + firstClueNo + secondClueNo + ".png";
+                    document.getElementById("correctimg").src = correctImgURL;
+                } else {
+                    $("#wrongModal").modal("show");
+                }
             });
 
             $('#d-btn').click(function () {
-                $("#correctModal").modal("show");
+                console.log("clicked");
+                if (firstClueNo == "A" && secondClueNo == "C") { //Thrusters - A and C
+                    $("#correctModal").modal("show");
+                    var correctImgURL = "img/Final" + firstClueNo + secondClueNo + ".png";
+                    document.getElementById("correctimg").src = correctImgURL;
+                } else {
+                    $("#wrongModal").modal("show");
+                }
             });
 
-            $('.next-btn').click(function () {
+            $('#correctimg').click(function () {
+                localStorage.clear();
                 window.location.href = "index.html"
             });
         });

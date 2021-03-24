@@ -43,10 +43,10 @@
 
         .clue-found-img {
             text-align: center;
-            width:100%;
+            width: 100%;
         }
 
-        .modal-content{
+        .modal-content {
             background: transparent;
         }
 
@@ -135,14 +135,60 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+
+            //picking two random samples
+
+            //----------------ignore----------------------//
+            // var firstClueNo = getRandomInt(4);
+
+            // var secondClueNo = getRandomInt(4);
+
+            // while (secondClueNo == firstClueNo) {
+            //     secondClueNo = getRandomInt(4);
+            // }
+
+            // firstClueNo = firstClueNo + 1;
+            // secondClueNo = secondClueNo + 1;
+
+            // console.log(firstClueNo);
+            // console.log(secondClueNo);
+            //----------------ignore-----------------------//
+
+            var clueCombinationNumber = getRandomInt(3);
+
+            var firstClueNo;
+            var secondClueNo;
+
+            switch (clueCombinationNumber) {
+                case 0:
+                    firstClueNo = "A";
+                    secondClueNo = "B";
+                    break;
+                case 1:
+                    firstClueNo = "A";
+                    secondClueNo = "C";
+                    break;
+                case 2:
+                    firstClueNo = "B";
+                    secondClueNo = "D";
+                    break;
+            }
+
+            //store the two items
+            localStorage.setItem('firstClue', firstClueNo);
+            localStorage.setItem('secondClue', secondClueNo);
+
             console.log("Webpage ready");
 
             $('#clue1img').click(function () {
-                window.location.href = "clue1.html"
-                
+                window.location.href = "clue1.html";
             });
 
         });
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
     </script>
 
 </body>

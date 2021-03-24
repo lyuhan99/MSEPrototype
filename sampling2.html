@@ -25,14 +25,23 @@
         body {
             position: relative;
             background-color: #3b3e42;
-            background-image: url('img/sampling2.PNG');
+            background-image: url('img/sampling2.png');
             background-size: auto 100%;
             background-repeat: no-repeat;
             background-position: center;
         }
 
-        .modal-content{
+        .clue-found-img {
+            /* text-align: center; */
+            width: 100%;
+        }
+
+        .modal-content {
             background-color: #3b3e42;
+        }
+
+        .modal-dialog {
+          max-width: 70vw; /* New width for default modal */
         }
 
         .select-btn {
@@ -69,10 +78,9 @@
             background: transparent;
         }
 
-        .next-btn{
+        .next-btn {
             border-radius: 2vw;
         }
-
     </style>
 
 
@@ -105,12 +113,13 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <div class="row justify-content-center">
+                    <img class="clue-found-img" id="correctimg"></img>
+                    <!-- <div class="row justify-content-center">
                         <h1 class="text-success">Your answer is correct!</h1>
                     </div>
                     <div class="row justify-content-center mx-3 mt-4">
                         <button type="button" class="next-btn btn btn-success btn-block">Next</button>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -153,23 +162,43 @@
         $(document).ready(function () {
             console.log("Webpage ready");
 
+            var secondClueNo = window.localStorage.getItem("secondClue");
+
             $('#a-btn').click(function () {
-                $("#correctModal").modal("show");
+                $("#wrongModal").modal("show");
             });
 
             $('#b-btn').click(function () {
-                $("#wrongModal").modal("show");  
+                if (secondClueNo == "B") {
+                    $("#correctModal").modal("show");
+                    var correctImgURL = "img/Correct" + secondClueNo + ".png";
+                    document.getElementById("correctimg").src = correctImgURL;
+                } else {
+                    $("#wrongModal").modal("show");
+                }
             });
 
             $('#c-btn').click(function () {
-                $("#wrongModal").modal("show");
+                if (secondClueNo == "C") {
+                    $("#correctModal").modal("show");
+                    var correctImgURL = "img/Correct" + secondClueNo + ".png";
+                    document.getElementById("correctimg").src = correctImgURL;
+                } else {
+                    $("#wrongModal").modal("show");
+                }
             });
 
             $('#d-btn').click(function () {
-                $("#wrongModal").modal("show");
+                if (secondClueNo == "D") {
+                    $("#correctModal").modal("show");
+                    var correctImgURL = "img/Correct" + secondClueNo + ".png";
+                    document.getElementById("correctimg").src = correctImgURL;
+                } else {
+                    $("#wrongModal").modal("show");
+                }
             });
 
-            $('.next-btn').click(function () {
+            $('#correctimg').click(function () {
                 window.location.href = "combined.html"
             });
         });
