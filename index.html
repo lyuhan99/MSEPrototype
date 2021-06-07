@@ -176,6 +176,10 @@
             localStorage.setItem('firstClue', firstClueNo);
             localStorage.setItem('secondClue', secondClueNo);
 
+            //check if tests have been done
+            localStorage.setItem('firstClueElectricTest', false);
+            localStorage.setItem('firstClueHydrophobicTest', false);
+
             console.log("Webpage ready");
 
             $('#clue1img').click(function () {

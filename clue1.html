@@ -49,9 +49,28 @@
         }
 
         .next-btn {
-            position: relative;
-            border-radius: 2vw;
-            width: 100%;
+            position: absolute;
+            top: 5vw;
+            right: 6.5vw;
+            width: 10vw;
+        }
+
+        @keyframes glowing {
+            0% {
+                box-shadow: 0 0 5px #ffffff;
+            }
+
+            50% {
+                box-shadow: 0 0 20px #ffffff;
+            }
+
+            100% {
+                box-shadow: 0 0 5px #ffffff;
+            }
+        }
+
+        .next-btn {
+            animation: glowing 1300ms infinite;
         }
     </style>
 
@@ -61,6 +80,7 @@
 <body>
 
     <div class="container relative">
+        <button type="button" class="next-btn btn btn-light rounded-pill">Next</button>
         <div class="test-selection-wrapper">
             <div class="row justify-content-center">
                 <div class="col">
@@ -113,9 +133,7 @@
                 </div>
 
 
-                <!-- <div class="col-md-4 offset-md-3 mr-5 my-auto">
-                    <button type="button" class="next-btn btn btn-light rounded-pill">Next</button>
-                </div> -->
+
             </div>
         </div>
         <!-- <div class="next-btn-wrapper">
@@ -139,6 +157,10 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+            //hide next button at the start
+            $('.next-btn').hide();
+
+
             var firstClueNo = window.localStorage.getItem("firstClue");
 
             var clueImgURL = "url('img/Clue" + firstClueNo + "1.png')";
@@ -151,6 +173,21 @@
                 window.location.href = "sampling1.html"
             });
 
+
+
+            //display next button if all tests have been completed
+            var allTestsDone = false;
+            var electricTestDone = window.localStorage.getItem("firstClueElectricTest");
+            var hydrophobicTestDone = window.localStorage.getItem("firstClueHydrophobicTest");
+
+            console.log(electricTestDone)
+            console.log(hydrophobicTestDone)
+
+            if (electricTestDone == "true" && hydrophobicTestDone == "true") {
+                allTestsDone = true;
+                $('.next-btn').fadeIn();
+
+            }
 
             //keyboard input
 
@@ -168,8 +205,13 @@
                     case "d":
                         window.location.href = "test-heat.html"
                         break;
+                    case "ArrowRight":
+                        if (allTestsDone){
+                            window.location.href = "sampling1.html"
+                        }
+                        break;
                     default:
-                        return; 
+                        return;
                 }
             });
 
