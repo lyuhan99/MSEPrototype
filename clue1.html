@@ -179,11 +179,13 @@
             var allTestsDone = false;
             var electricTestDone = window.localStorage.getItem("firstClueElectricTest");
             var hydrophobicTestDone = window.localStorage.getItem("firstClueHydrophobicTest");
+            var heatTestDone = window.localStorage.getItem("firstClueHeatTest");
 
             console.log(electricTestDone)
             console.log(hydrophobicTestDone)
 
-            if (electricTestDone == "true" && hydrophobicTestDone == "true") {
+            if (electricTestDone == "true" && hydrophobicTestDone == "true"
+                && heatTestDone == "true") {
                 allTestsDone = true;
                 $('.next-btn').fadeIn();
 
@@ -206,7 +208,7 @@
                         window.location.href = "test-heat.html"
                         break;
                     case "ArrowRight":
-                        if (allTestsDone){
+                        if (allTestsDone) {
                             window.location.href = "sampling1.html"
                         }
                         break;
