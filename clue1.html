@@ -180,12 +180,13 @@
             var electricTestDone = window.localStorage.getItem("firstClueElectricTest");
             var hydrophobicTestDone = window.localStorage.getItem("firstClueHydrophobicTest");
             var heatTestDone = window.localStorage.getItem("firstClueHeatTest");
+            var hydrodynamicTestDone = window.localStorage.getItem("firstClueHydrodynamicTest");
 
             console.log(electricTestDone)
             console.log(hydrophobicTestDone)
 
             if (electricTestDone == "true" && hydrophobicTestDone == "true"
-                && heatTestDone == "true") {
+                && heatTestDone == "true" && hydrodynamicTestDone == "true") {
                 allTestsDone = true;
                 $('.next-btn').fadeIn();
 
