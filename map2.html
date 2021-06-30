@@ -96,12 +96,12 @@
         <div class="clue1-wrapper">
             <button type="button" class="btn btn-danger cluebtn" id="Clue1"></button>
         </div>
-        <div class="clue2-wrapper">
+        <!-- <div class="clue2-wrapper">
             <button type="button" class="btn btn-secondary cluebtn" id="Clue2" data-toggle="modal"
                 data-target="#clue2Modal"></button>
-        </div>
-        <div class="clue3-wrapper">
-            <button type="button" class="btn btn-warning cluebtn" id="Clue3"></button>
+        </div> -->
+        <div class="clue2-wrapper">
+            <button type="button" class="btn btn-warning cluebtn" id="Clue2"> Modal (keyboard: true) </button>
         </div>
         <div class="clue4-wrapper">
             <button type="button" class="btn btn-success cluebtn" id="Clue4"></button>
@@ -110,14 +110,38 @@
 
 
     <!-- Modal for Clue 2 -->
-    <div class="modal fade no-b" id="clue2Modal" tabindex="-1" role="dialog" aria-labelledby="clue2Modallabel"
+    <!-- <div class="modal fade no-b" id="clue2Modal" tabindex="-1" role="dialog" aria-labelledby="clue2Modallabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered no-b" role="document">
             <div class="modal-content no-b">
                 <img class="clue-found-img" id="clue2img" src="img/clue2foundimg.png"></img>
             </div>
         </div>
+    </div> --> 
+
+    <!-- Modal -->
+  <div class="modal fade" id="Clue2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">Modal Options</h4>
+        </div>
+        <div class="modal-body">
+          <p>This modal cannot be closed with the escape key on your keyboard.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
     </div>
+  </div>
+
+
+
 
     <!-- JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -135,20 +159,16 @@
         $(document).ready(function () {
             console.log("Webpage ready");
 
-            $('#clue2img').click(function () {
+            $("#myBtn").click(function(){
+    $("#myModal").modal({keyboard: true});
+  });
+ 
+
+            /*$('#clue2img').click(function () {
                 window.location.href = "clue2.html";
-            });
+            });*/ 
 
-                 function myFunction(event) {
-  var x = event.key;
-
-  // If the pressed keyboard button is "a" or "A" (using caps lock or shift), alert some text.
-  if (x == "a" || x == "A") { 
-    alert ("You pressed the 'A' key!");
-  }
-}
-
-            document.addEventListener('keydown', function (event) {
+            /*document.addEventListener('keydown', function (event) {
                 switch (event.key) {
                     case "e": //A key
                         window.location.href = "#clue2img"
@@ -170,7 +190,7 @@
                     default:
                         return;
                 }
-            });
+            });*/
 
         });
 
@@ -179,4 +199,80 @@
 
 </body>
 
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Modal Options</h2>
+  <p>The <strong>keyboard</strong> option specifies whether the modal can be closed with the escape key.</p>
+  <p><strong>Note:</strong> Press the Tab key on your keyboard to enter the modal window and then press the Esc key.</p>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-success btn-md" id="myBtn">Modal (keyboard:true)</button>
+  <button type="button" class="btn btn-danger btn-md" id="myBtn2">Modal (keyboard:false)</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Options</h4>
+        </div>
+        <div class="modal-body">
+          <p>This modal can be closed with the escape key on your keyboard.</p>
+          <p><strong>Note:</strong> You need to press the tab key on the keyboard to first enter the modal window, and then press the Esc key.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">Modal Options</h4>
+        </div>
+        <div class="modal-body">
+          <p>This modal cannot be closed with the escape key on your keyboard.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+ 
+<script>
+$(document).ready(function(){
+  $("#myBtn").click(function(){
+    $("#myModal").modal({keyboard: true});
+  });
+  $("#myBtn2").click(function(){
+    $("#myModal2").modal({keyboard: false});
+  });
+});
+</script>
+
+</body>
 </html>
