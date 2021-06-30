@@ -94,7 +94,8 @@
 <body>
     <div class="container-fluid">
         <div class="clue1-wrapper">
-            <button type="button" class="btn btn-danger cluebtn" id="Clue1"></button>
+            <button type="button" class="btn btn-danger cluebtn" id="Clue1" data-toggle="modal"
+                data-target="#clue1Modal"> </button>
         </div>
          <div class="clue2-wrapper">
             <button type="button" class="btn btn-secondary cluebtn" id="Clue2" data-toggle="modal"
@@ -108,6 +109,16 @@
         </div>
     </div>
 
+     <!-- Modal for Clue 1 -->
+    <div class="modal fade no-b" id="clue1Modal" tabindex="-1" role="dialog" aria-labelledby="clue1Modallabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered no-b" role="document">
+            <div class="modal-content no-b">
+                <img class="clue-found-img" id="clueimg" src="img/cluefoundimg.png"></img>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Modal for Clue 2 -->
     <div class="modal fade no-b" id="clue2Modal" tabindex="-1" role="dialog" aria-labelledby="clue2Modallabel"
@@ -118,30 +129,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-  <!-- <div class="modal fade no-b" id="Clue2model" role="dialog">
-    <div class="modal-dialog">
-    
-      <!- Modal content--
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">×</button>
-          <h4 class="modal-title">Modal Options</h4>
-        </div>
-        <div class="modal-body">
-          <p>This modal cannot be closed with the escape key on your keyboard.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div> -->
-
-
-
 
     <!-- JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
