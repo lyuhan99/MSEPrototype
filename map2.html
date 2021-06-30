@@ -120,7 +120,7 @@
     </div> --> 
 
     <!-- Modal -->
-  <div class="modal fade no-b" id="Clue2" role="dialog">
+  <div class="modal fade no-b" id="Clue2model" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -159,8 +159,8 @@
         $(document).ready(function () {
             console.log("Webpage ready");
 
-            $("#myBtn").click(function(){
-    $("#myModal").modal({keyboard: true});
+            $("Clue2").click(function(){
+    $("Clue2Modal").modal({keyboard: true});
   });
  
 
@@ -201,7 +201,7 @@
 
 </html>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -215,15 +215,15 @@
   <h2>Modal Options</h2>
   <p>The <strong>keyboard</strong> option specifies whether the modal can be closed with the escape key.</p>
   <p><strong>Note:</strong> Press the Tab key on your keyboard to enter the modal window and then press the Esc key.</p>
-  <!-- Trigger the modal with a button -->
+  <!- Trigger the modal with a button --
   <button type="button" class="btn btn-success btn-md" id="myBtn">Modal (keyboard:true)</button>
   <button type="button" class="btn btn-danger btn-md" id="myBtn2">Modal (keyboard:false)</button>
 
-  <!-- Modal -->
+  <!- Modal --
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
-      <!-- Modal content-->
+      <!- Modal content--
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -241,11 +241,11 @@
     </div>
   </div>
 
-  <!-- Modal -->
+  <!- Modal --
   <div class="modal fade" id="myModal2" role="dialog">
     <div class="modal-dialog">
     
-      <!-- Modal content-->
+      <!- Modal content--
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">×</button>
@@ -275,4 +275,4 @@ $(document).ready(function(){
 </script>
 
 </body>
-</html>
+</html> -->
