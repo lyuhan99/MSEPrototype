@@ -139,6 +139,15 @@
                 window.location.href = "clue2.html";
             });
 
+                 function myFunction(event) {
+  var x = event.key;
+
+  // If the pressed keyboard button is "a" or "A" (using caps lock or shift), alert some text.
+  if (x == "a" || x == "A") { 
+    alert ("You pressed the 'A' key!");
+  }
+}
+
             document.addEventListener('keydown', function (event) {
                 switch (event.key) {
                     case "e": //A key
@@ -165,14 +174,7 @@
 
         });
 
-        function myFunction(event) {
-  var x = event.key;
-
-  // If the pressed keyboard button is "a" or "A" (using caps lock or shift), alert some text.
-  if (x == "a" || x == "A") { 
-    alert ("You pressed the 'A' key!");
-  }
-}
+   
     </script>
 
 </body>
