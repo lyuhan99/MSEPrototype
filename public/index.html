@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- Bootstrap -->
 
-
-
+    <!----Socket to send stuff to arduino --->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js'></script>
 
     <!---CSS-->
     <style>
@@ -134,6 +134,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+            var socket = io();
+            socket.emit('message', { "status":"map_start" });
+
             //picking two random samples
 
             //----------------ignore----------------------//
@@ -175,6 +178,10 @@
             //store the two items
             localStorage.setItem('firstClue', firstClueNo);
             localStorage.setItem('secondClue', secondClueNo);
+
+            //check if tests have been done
+            localStorage.setItem('firstClueElectricTest', false);
+            localStorage.setItem('firstClueHydrophobicTest', false);
 
             console.log("Webpage ready");
 
