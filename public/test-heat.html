@@ -275,6 +275,7 @@
             document.addEventListener('keydown', function (event) {
                 switch (event.key) {
                     case "d": //Enter key
+                        resetObject = false;
                         console.log(temperature);
                         if (temperature == 0) { //temperature becomes 1000 degrees
                             temperature = 1000
