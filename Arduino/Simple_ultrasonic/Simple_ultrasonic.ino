@@ -1,3 +1,10 @@
+const int tresh = 20;
+int sensorNum = 1;
+String val = "";
+
+bool detect = false;
+const int resetPin = 13;
+
 const int trig1 = 1;
 const int trig2 = 2;
 const int trig3 = 3;
@@ -20,8 +27,13 @@ long distance3 = 0;
 long duration4 = 0;
 long distance4 = 0;
 
+
 void setup() 
 {
+  pinMode(resetPin, OUTPUT);
+  digitalWrite(resetPin, HIGH);
+  Serial.println("reset");
+  
   pinMode(trig1 , OUTPUT);
   pinMode(trig2 , OUTPUT);
   pinMode(trig3 , OUTPUT);
@@ -31,59 +43,110 @@ void setup()
   pinMode(echo2 , INPUT);
   pinMode(echo3 , INPUT);
   pinMode(echo4 , INPUT);
-
-  Serial.begin(9600);
+  
+  Serial.begin(9600); 
 }
 
 void loop()
 { 
-  sonic2();
-  sonic3();
-  sonic4();  
-  sonic1();  
+  if (detect) { Serial.println("map_end"); resetBt();}
+
+  if (Serial.available() > 0) { 
+    
+    while (Serial.available() > 0) {
+      val = Serial.read(); 
+    }
+    
+    if(val == "map_start"){      
+      sensorNum = random(1,5); 
+      delay(3000); 
+         
+      Serial.println(sensorNum);
+      if (sensorNum == 1) {
+        sonic2();
+      } else if (sensorNum == 2) {
+        sonic3();  
+      } else if (sensorNum == 3) {
+        sonic4();  
+      } else if (sensorNum == 4) {
+        sonic1();  
+      }
+    }
+  }
 }
 
 void sonic1(){
-  digitalWrite(trig1 , HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trig1 , LOW);
 
-  duration1 = pulseIn(echo1 , HIGH);
-  distance1 = (duration1/2) / 28.5 ; 
-  Serial.print("        Sonic4: "); 
-  Serial.print(distance1); 
+  while(!detect) {
+    digitalWrite(trig1 , HIGH);
+    delayMicroseconds(10);
+    digitalWrite(trig1 , LOW);
+  
+    duration1 = pulseIn(echo1 , HIGH);
+    distance1 = (duration1/2) / 28.5 ; 
+    
+    if (distance1 < tresh && distance1 > 0) {
+      Serial.print("Sonic4: "); 
+      Serial.println(distance1);
+      detect = !detect;  
+    }
+  }
 }
 
 void sonic2() {
-  digitalWrite(trig2 , HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trig2 , LOW);
 
-  duration2 = pulseIn(echo2 , HIGH);
-  distance2 = (duration2/2) / 28.5 ;  
-  Serial.println();  
-  Serial.print("Sonic1: "); 
-  Serial.print(distance2);
+  while(!detect) {
+    digitalWrite(trig2 , HIGH);
+    delayMicroseconds(10);
+    digitalWrite(trig2 , LOW);
+  
+    duration2 = pulseIn(echo2 , HIGH);
+    distance2 = (duration2/2) / 28.5 ;  
+     
+    if (distance2 < tresh && distance2 > 0) { 
+      Serial.println("Sonic1: "); 
+      Serial.print(distance2);
+      detect = !detect;
+    }
+  }
 }
 
 void sonic3() {
-  digitalWrite(trig3 , HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trig3 , LOW);
 
-  duration3 = pulseIn(echo3 , HIGH);
-  distance3 = (duration3/2) / 28.5 ;
-  Serial.print("        Sonic2: "); 
-  Serial.print(distance3);
+  while(!detect) {
+    digitalWrite(trig3 , HIGH);
+    delayMicroseconds(10);
+    digitalWrite(trig3 , LOW);
+  
+    duration3 = pulseIn(echo3 , HIGH);
+    distance3 = (duration3/2) / 28.5 ;  
+    
+    if (distance3 < tresh && distance3 > 0) {
+      Serial.println("Sonic2: "); 
+      Serial.print(distance3);
+      detect = !detect;
+    }
+  }
 }
 
 void sonic4() {
-  digitalWrite(trig4 , HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trig4 , LOW);
+  
+  while(!detect) {
+    digitalWrite(trig4 , HIGH);
+    delayMicroseconds(10);
+    digitalWrite(trig4 , LOW);
+  
+    duration4 = pulseIn(echo4 , HIGH);
+    distance4 = (duration4/2) / 28.5 ;  
+    
+    if (distance4 < tresh && distance4 > 0) {
+      Serial.println("Sonic3: "); 
+      Serial.print(distance4);
+      detect = !detect;
+    }
+  }
+}
 
-  duration4 = pulseIn(echo4 , HIGH);
-  distance4 = (duration4/2) / 28.5 ;
-  Serial.print("        Sonic3: "); 
-  Serial.print(distance2);
+void resetBt() {
+  digitalWrite(resetPin, LOW);
 }
