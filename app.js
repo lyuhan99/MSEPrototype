@@ -53,6 +53,13 @@ io.on('connection', function(socket) {
     
 });
 
+parser.on('data', function(data) {
+    
+    console.log('Received data from port: ' + data);
+    io.emit('data', data);
+    
+});
+
 //References
 //https://www.youtube.com/watch?v=hFBFju_ZSYs&ab_channel=AdamThomas
 //prof chua's website omg
