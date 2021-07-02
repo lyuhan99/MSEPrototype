@@ -137,9 +137,11 @@
             //sending and receiving data
             var socket = io();
 
-            var sendInterval = window.setInterval(function () {
-                socket.emit('message', { "status": "m" });
-            }, 1000);
+            socket.emit('message', { "status": "m" });
+
+            // var sendInterval = window.setInterval(function () {
+            //     socket.emit('message', { "status": "m" });
+            // }, 1000);
 
             var messageReceived;
             socket.on('data', function (data) {
@@ -151,12 +153,17 @@
                     $('#clue1Modal').modal('show')
                 } else if (messageReceived == "map_start") {
                     //stop sending the message
-                    clearInterval(sendInterval)
+                    //clearInterval(sendInterval)
                 }
             });
 
-
-
+            //for testing - to stop sending message
+            // document.addEventListener('keydown', function (event) {
+            //     switch (event.key) {
+            //         case "d": 
+            //             clearInterval(sendInterval)
+            //     }
+            // });
 
             var clueCombinationNumber = getRandomInt(3);
 
