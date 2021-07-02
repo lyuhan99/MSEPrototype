@@ -168,6 +168,7 @@
                     case "Enter": //Enter key
                         if (!switchOn) {
                             //$(".switch-btn").animate({ left: "45.7vw" });
+                            localStorage.setItem('firstClueHydrophobicTest', true); 
                             $(".tap-dial").removeClass("tap-animation-off")
                             $(".tap-dial").addClass("tap-animation-on")
                             setTimeout(function () {
@@ -184,7 +185,6 @@
                                             $(".test-image").attr("src", "img/not-hydrophobic2.jpg");
                                         }
                                         //record that test has been done
-                                        localStorage.setItem('firstClueHydrophobicTest', true); 
                                         $(".instruction-text").text("Press [Enter] to start again.")
                                         switchOn = true;
                                     }, 350);

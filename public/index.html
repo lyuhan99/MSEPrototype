@@ -136,7 +136,7 @@
 
             //sending and receiving data
             var socket = io();
-            socket.emit('message', { "status": "map_start" });
+            socket.emit('message', { "status": "m" });
 
             var messageReceived;
             socket.on('data', function (data) {
@@ -145,7 +145,7 @@
                 messageReceived = data + "";
             });
 
-            if (messageReceived == "map_end"){
+            if (messageReceived == "n"){
                 //show clue modal
                 $('#clue1Modal').modal('show')
             }
