@@ -3,7 +3,6 @@ int sensorNum = 1;
 bool isMapEnd = false;
 
 bool detect = false;
-const int resetPin = 13;
 
 const int trig1 = 1;
 const int trig2 = 2;
@@ -30,9 +29,6 @@ long distance4 = 0;
 void setup() 
 { 
   randomSeed(analogRead(0));
-  pinMode(resetPin, OUTPUT);
-  digitalWrite(resetPin, HIGH);
-  Serial.println("reset");
   
   pinMode(trig1 , OUTPUT);
   pinMode(trig2 , OUTPUT);
@@ -59,7 +55,7 @@ void loop() {
           isMapEnd = false;
           Serial.println("map_start");
           sensorNum = random(1,5); 
-          delay(3000);
+          delay(5000);
           Serial.println(sensorNum);
           if (sensorNum == 1) {
             sonic2();
@@ -77,26 +73,27 @@ void loop() {
     detect = false;
     Serial.println('n');
     isMapEnd = true;
-    digitalWrite(resetPin, LOW);
   }
 }
 
 void sonic1(){
 
-  while(!detect) {
-    digitalWrite(trig1 , HIGH);
-    delayMicroseconds(10);
-    digitalWrite(trig1 , LOW);
-  
-    duration1 = pulseIn(echo1 , HIGH);
-    distance1 = (duration1/2) / 28.5 ; 
-    
-    if (distance1 < tresh && distance1 > 0) {
-      Serial.print("Sonic4: "); 
-      Serial.println(distance1);
-      detect = !detect;  
-    }
-  }
+//  while(!detect) {
+//    digitalWrite(trig1 , HIGH);
+//    delayMicroseconds(10);
+//    digitalWrite(trig1 , LOW);
+//  
+//    duration1 = pulseIn(echo1 , HIGH);
+//    distance1 = (duration1/2) / 28.5 ; 
+//    
+//    if (distance1 < tresh && distance1 > 0) {
+//      Serial.print("Sonic4: "); 
+//      Serial.println(distance1);
+//      detect = !detect;  
+//    }
+//  }
+  delay(5000);
+  detect = !detect;
 }
 
 void sonic2() {
