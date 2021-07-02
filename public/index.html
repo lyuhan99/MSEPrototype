@@ -136,7 +136,10 @@
 
             //sending and receiving data
             var socket = io();
-            socket.emit('message', { "status": "m" });
+
+            var sendInterval = window.setInterval(function () {
+                socket.emit('message', { "status": "m" });
+            }, 1000);
 
             var messageReceived;
             socket.on('data', function (data) {
@@ -146,6 +149,8 @@
                 if (messageReceived == "n") {
                     //show clue modal
                     $('#clue1Modal').modal('show')
+                    //stop sending the message
+                    clearInterval(sendInterval) 
                 }
             });
 
