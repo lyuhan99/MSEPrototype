@@ -134,26 +134,22 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+            //sending and receiving data
             var socket = io();
-            socket.emit('message', { "status":"map_start" });
+            socket.emit('message', { "status": "m" });
 
-            //picking two random samples
+            var messageReceived;
+            socket.on('data', function (data) {
+                console.log(data);
+                //data is what is received
+                messageReceived = data + "";
+            });
 
-            //----------------ignore----------------------//
-            // var firstClueNo = getRandomInt(4);
+            if (messageReceived == "n"){
+                //show clue modal
+                $('#clue1Modal').modal('show')
+            }
 
-            // var secondClueNo = getRandomInt(4);
-
-            // while (secondClueNo == firstClueNo) {
-            //     secondClueNo = getRandomInt(4);
-            // }
-
-            // firstClueNo = firstClueNo + 1;
-            // secondClueNo = secondClueNo + 1;
-
-            // console.log(firstClueNo);
-            // console.log(secondClueNo);
-            //----------------ignore-----------------------//
 
             var clueCombinationNumber = getRandomInt(3);
 
@@ -194,6 +190,7 @@
         function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
         }
+
     </script>
 
 </body>
