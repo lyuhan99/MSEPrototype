@@ -149,8 +149,9 @@
                 if (messageReceived == "n") {
                     //show clue modal
                     $('#clue1Modal').modal('show')
+                } else if (messageReceived == "map_start") {
                     //stop sending the message
-                    clearInterval(sendInterval) 
+                    clearInterval(sendInterval)
                 }
             });
 
