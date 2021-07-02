@@ -136,7 +136,6 @@
 
             //sending and receiving data
             var socket = io();
-            var clueFound = false;
 
             var sendInterval = window.setInterval(function () {
                 socket.emit('message', { "status": "m" });
