@@ -143,12 +143,12 @@
                 console.log(data);
                 //data is what is received
                 messageReceived = data + "";
+                $('#clue1Modal').modal('show')
             });
 
-            if (messageReceived == "n"){
-                //show clue modal
-                $('#clue1Modal').modal('show')
-            }
+            // if (messageReceived == "n"){
+            //     //show clue modal
+            // }
 
 
             var clueCombinationNumber = getRandomInt(3);
