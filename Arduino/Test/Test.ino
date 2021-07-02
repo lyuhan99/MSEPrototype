@@ -16,9 +16,9 @@ void loop() {
 
       //Serial.println(receivedString);
         
-      if(receivedString == 'y') {
+      if(receivedString == 'm') {
           isTouched = false;
-          Serial.println('m');
+          Serial.println("map_start");
       }
   }
 
