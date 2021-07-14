@@ -143,6 +143,13 @@
                 socket.emit('message', { "status": "m" });
             }, 1000);
 
+            //if clue is not found after 30 seconds
+            setTimeout(function () {
+                //stop sending the message and show clue modal
+                clearInterval(sendInterval)
+                $('#clue1Modal').modal('show')
+            }, 30000);
+
             var messageReceived;
             socket.on('data', function (data) {
                 console.log(data);
