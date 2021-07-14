@@ -1,206 +1,145 @@
 <!DOCTYPE html>
+
 <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Pragma" name="Pragma" content="no-cache">
+        <title>MSE Prototype</title>
+        <base target="_top">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Pragma" name="Pragma" content="no-cache">
-    <title>MSE Prototype</title>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="samp1.css">
+    </head>
 
-    <!-- Bootstrap -->
-    <base target="_top">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <!-- Bootstrap -->
-
-
-
-
-    <!---CSS-->
-    <style>
-        html,
-        body {
-            height: 100%;
-        }
-
-        body {
-            position: relative;
-            background-color: #3b3e42;
-            background-image: url('img/sampling1.png');
-            background-size: auto 100%;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        .clue-found-img {
-            /* text-align: center; */
-            width: 100%;
-        }
-
-        .modal-content {
-            background-color: #3b3e42;
-        }
-
-        /* .modal-body {
-            max-height: 500vh;
-        } */
-
-        .modal-dialog {
-          max-width: 70vw; /* New width for default modal */
-        }
-
-        .select-btn {
-            /*background-color:white;*/
-            width: 10vw;
-            height: 20vh;
-        }
-
-        .a-btn-wrapper {
-            position: absolute;
-            top: 65vh;
-            left: 15vw;
-            background: transparent;
-        }
-
-        .b-btn-wrapper {
-            position: absolute;
-            top: 65vh;
-            left: 35vw;
-            background: transparent;
-        }
-
-        .c-btn-wrapper {
-            position: absolute;
-            top: 65vh;
-            left: 55vw;
-            background: transparent;
-        }
-
-        .d-btn-wrapper {
-            position: absolute;
-            top: 65vh;
-            left: 75vw;
-            background: transparent;
-        }
-
-        .next-btn {
-            border-radius: 2vw;
-        }
-    </style>
-
-
-</head>
-
-<body>
-    <div class="container-fluid">
-        <div class="a-btn-wrapper">
-            <div class="select-btn" id="a-btn">
-            </div>
-        </div>
-        <div class="b-btn-wrapper">
-            <div class="select-btn" id="b-btn">
-            </div>
-        </div>
-        <div class="c-btn-wrapper">
-            <div class="select-btn" id="c-btn">
-            </div>
-        </div>
-        <div class="d-btn-wrapper">
-            <div class="select-btn" id="d-btn">
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Correct Modal -->
-    <div class="modal fade" id="correctModal" tabindex="-1" role="dialog" aria-labelledby="correctModalTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <img class="clue-found-img" id="correctimg"></img>
-                    <!-- <div class="row justify-content-center">
-                        <h1 class="text-success">Your answer is correct!</h1>
-                    </div>
-                    <div class="row justify-content-center mx-3 mt-4">
-                        <button type="button" class="next-btn btn btn-success btn-block">Next</button>
-                    </div> -->
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- wrong Modal -->
-    <div class="modal fade" id="wrongModal" tabindex="-1" role="dialog" aria-labelledby="wrongModalTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="row justify-content-center">
-                        <h1 class="text-danger">Your answer is wrong!</h1>
+    <body>
+        <h1>HERE ARE 4 SAMPLES OF <br> MATERIALS FOUND SCATTERED <br> AROUND THE CRIME SCENE<br></h1>
+        <br>
+        <h2>Observe and determine which one best fit the <br>description of <bold>CLUE #1</bold></h2>
+        <br>
+            <div id="btnCtnr">
+                <div class="btn-wrapper">
+                    <div class="select-btn" id="a-btn">
+                        <p><bold>A</bold></p>
                     </div>
                 </div>
+                <div class="btn-wrapper">
+                    <div class="select-btn" id="b-btn">
+                        <p><bold>B</bold></p>
+                    </div>
+                </div>
+                <div class="btn-wrapper">
+                    <div class="select-btn" id="c-btn">
+                        <p><bold>C</bold></p>
+                    </div>
+                </div>
+                <div class="btn-wrapper">
+                    <div class="select-btn" id="d-btn">
+                        <p><bold>D</bold></p>
+                    </div>
+                </div>
+            </div>
 
+
+        <!-- Correct Modal -->
+        <div class="modal fade" id="correctModal" tabindex="-1" role="dialog" aria-labelledby="correctModalTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img class="clue-found-img" id="correctimg"></img>
+                        <!-- <div class="row justify-content-center">
+                            <h1 class="text-success">Your answer is correct!</h1>
+                        </div>
+                        <div class="row justify-content-center mx-3 mt-4">
+                            <button type="button" class="next-btn btn btn-success btn-block">Next</button>
+                        </div> -->
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
+
+        <!-- wrong Modal -->
+        <div class="modal fade" id="wrongModal" tabindex="-1" role="dialog" aria-labelledby="wrongModalTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row justify-content-center">
+                            <h1 class="text-danger">Your answer is wrong!</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
-    <!-- JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+        <!-- JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 
 
-    <!-- Script -->
+        <!-- Script -->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                console.log("Webpage ready");
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            console.log("Webpage ready");
+                var firstClueNo = window.localStorage.getItem("firstClue");
 
-            var firstClueNo = window.localStorage.getItem("firstClue");
+                $('#a-btn').click(function () {
+                    if (firstClueNo == "A") {
+                        $("#correctModal").modal("show");
+                        var correctImgURL = "img/Correct" + firstClueNo + ".png";
+                        document.getElementById("correctimg").src = correctImgURL;
+                    } else {
+                        $("#wrongModal").modal("show");
+                    }
+                });
 
-            $('#a-btn').click(function () {
-                if (firstClueNo == "A") {
-                    $("#correctModal").modal("show");
-                    var correctImgURL = "img/Correct" + firstClueNo + ".png";
-                    document.getElementById("correctimg").src = correctImgURL;
-                } else {
+                $('#b-btn').click(function () {
+                    if (firstClueNo == "B") {
+                        $("#correctModal").modal("show");
+                        var correctImgURL = "img/Correct" + firstClueNo + ".png";
+                        document.getElementById("correctimg").src = correctImgURL;
+                    } else {
+                        $("#wrongModal").modal("show");
+                    }
+                });
+
+                $('#c-btn').click(function () {
                     $("#wrongModal").modal("show");
-                }
-            });
+                });
 
-            $('#b-btn').click(function () {
-                if (firstClueNo == "B") {
-                    $("#correctModal").modal("show");
-                    var correctImgURL = "img/Correct" + firstClueNo + ".png";
-                    document.getElementById("correctimg").src = correctImgURL;
-                } else {
+                $('#d-btn').click(function () {
                     $("#wrongModal").modal("show");
-                }
+                });
+
+                $('#correctimg').click(function () {
+                    window.location.href = "map2.html"
+                });
+
+                $('#btn').click(function () {
+                    if (firstClueNo == "A") {
+                        $("#correctModal").modal("show");
+                        var correctImgURL = "img/Correct" + firstClueNo + ".png";
+                        document.getElementById("correctimg").src = correctImgURL;
+                    } else {
+                        $("#wrongModal").modal("show");
+                    }
+                });
             });
-
-            $('#c-btn').click(function () {
-                $("#wrongModal").modal("show");
-            });
-
-            $('#d-btn').click(function () {
-                $("#wrongModal").modal("show");
-            });
-
-            $('#correctimg').click(function () {
-                window.location.href = "map2.html"
-            });
-        });
-    </script>
-
-</body>
-
+        </script>
+    </body>
 </html>
