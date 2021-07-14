@@ -1,0 +1,110 @@
+.sampling1 {
+    background-color: #3b3e42;
+    background-image: url('img/sampling1.png');
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    padding-top: 60vh; 
+    font-size: 70px;
+    color: white;
+    margin-bottom: 1px;
+    font-family:monospace;
+}
+
+.sampling2 {
+    background-color: #3b3e42;
+    background-image: url('img/sampling2.png');
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    padding-top: 60vh; 
+    font-size: 70px;
+    color: white;
+    margin-bottom: 1px;
+    font-family:monospace;
+}
+
+.combined1 {
+    background-color: #3b3e42;
+    background-image: url('img/sampling1.png');
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    padding-top: 60vh; 
+    font-size: 70px;
+    color: white;
+    margin-bottom: 1px;
+    font-family:monospace;
+}
+
+h1{
+    font-size: 70px;
+    font-family:fantasy;
+    color:white;
+    text-shadow: black;
+}
+
+#btnCtnr {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.btn-wrapper {
+    flex: 0 1 auto;
+    cursor: pointer;
+    margin: 0.25em;
+}
+
+.select-btn {
+    border-radius: 100%;
+    border: 10px  white solid;
+    background-color:red;
+    padding: 3%;
+
+    height: 200px;
+    width: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 9px #999;
+
+    font-size:2rem;
+    font-family:Arial, Helvetica, sans-serif;
+    color:white;
+}
+
+
+.select-btn:hover {background-color: #087539}
+
+.select-btn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.clue-found-img {
+    /* text-align: center; */
+    width: 100%;
+}
+
+.modal-content {
+    background-color: #3b3e42;
+}
+
+/* .modal-body {
+    max-height: 500vh;
+} */
+
+.modal-dialog {
+max-width: 70vw; /* New width for default modal */
+}
+
+.next-btn {
+    border-radius: 2vw;
+}
