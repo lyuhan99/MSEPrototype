@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Pragma" name="Pragma" content="no-cache">
+    <title>MSE Prototype</title>
+
+    <!-- Bootstrap -->
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Bootstrap -->
+
+    
+    <!----Socket to send stuff to arduino --->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js'></script>
+
+    <!---CSS-->
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background-color: #3b3e42;
+            background-image: url('img/instructions.jpg');
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .clue-found-img {
+            text-align: center;
+            width: 100%;
+        }
+
+        .modal-content {
+            background: transparent;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container-fluid">
+
+
+    </div>
+
+    <!-- Modal for Clue 1 -->
+    <div class="modal fade no-b" id="clue1Modal" tabindex="-1" role="dialog" aria-labelledby="clue1Modallabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered no-b" role="document">
+            <div class="modal-content no-b">
+                <img class="clue-found-img" id="clue1img" src="img/cluefoundimg.png"></img>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+    <!-- Script -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //sending and receiving data
+            var socket = io();
+
+            //socket.emit('message', { "status": "m" });
+
+            var sendInterval = window.setInterval(function () {
+                socket.emit('message', { "status": "m" });
+            }, 1000);
+
+            //if clue is not found after 30 seconds
+            setTimeout(function () {
+                //stop sending the message and show clue modal
+                clearInterval(sendInterval)
+                $('#clue1Modal').modal('show')
+            }, 30000);
+
+            var messageReceived;
+            socket.on('data', function (data) {
+                console.log(data);
+                //data is what is received
+                messageReceived = data + "";
+                if (messageReceived == "n") {
+                    //show clue modal
+                    $('#clue1Modal').modal('show')
+                } else if (messageReceived == "map_start") {
+                    //stop sending the message
+                    clearInterval(sendInterval)
+                }
+            });
+
+            var clueCombinationNumber = getRandomInt(3);
+
+            var firstClueNo;
+            var secondClueNo;
+
+            switch (clueCombinationNumber) {
+                case 0:
+                    firstClueNo = "A";
+                    secondClueNo = "B";
+                    break;
+                case 1:
+                    firstClueNo = "A";
+                    secondClueNo = "C";
+                    break;
+                case 2:
+                    firstClueNo = "B";
+                    secondClueNo = "D";
+                    break;
+            }
+
+            //store the two items
+            localStorage.setItem('firstClue', firstClueNo);
+            localStorage.setItem('secondClue', secondClueNo);
+
+            //check if tests have been done
+            localStorage.setItem('firstClueElectricTest', false);
+            localStorage.setItem('firstClueHydrophobicTest', false);
+
+            console.log("Webpage ready");
+
+            $('#clue1img').click(function () {
+                window.location.href = "clue1.html";
+            });
+
+
+        });
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+
+
+    </script>
+
+</body>
+
+</html>
