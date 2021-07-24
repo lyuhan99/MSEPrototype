@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- Bootstrap -->
 
+    <!----Socket to send stuff to arduino --->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js'></script>
+
+
     <!---CSS-->
     <style>
         html,
@@ -27,9 +31,6 @@
             background-repeat: no-repeat;
             background-position: center;
         }
-
-
-        
     </style>
 
 
@@ -37,7 +38,7 @@
 
 <body>
     <div class="container-fluid">
-      
+
     </div>
 
     <!-- JavaScript -->
@@ -55,6 +56,10 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+            //sending and receiving data
+            var socket = io();
+            socket.emit('message', { "status": "page_3" });
+
             var firstClueNo = window.localStorage.getItem("firstClue");
 
             var clueImgURL = "url('img/Clue" + firstClueNo + "1-new.png')";
@@ -65,7 +70,6 @@
             document.addEventListener('keydown', function (event) {
                 switch (event.key) {
                     case "Enter": //A key
-                        window.location.href = "instructions.html"
                         break;
                     default:
                         return;
@@ -73,7 +77,7 @@
             });
 
 
-        
+
         });
 
 
