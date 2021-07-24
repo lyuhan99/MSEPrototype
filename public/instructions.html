@@ -70,6 +70,11 @@
         </div>
     </div>
 
+    <audio id="scanner" autoplay loop>
+        <source src="audio/scanner.mp3" type="audio/mp3">
+    </audio>
+    <audio id="found" src="audio/ding.mp3"></audio>
+    <audio src="audio/button-sfx.mp3" id="start-button-fx"></audio>
 
     <!-- JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -102,7 +107,7 @@
                 clearInterval(sendInterval)
                 showClueFound();
                 clueFound = true;
-            }, 30000);
+            }, 5000);
 
             var messageReceived;
             var clueFound = false; //check if clue has been found
@@ -155,11 +160,19 @@
                     case "Enter": //Enter key
                         console.log(clueFound);
                         if (clueFound) {
-                            window.location.href = "clue1.html"
+                            var startButtonFX = document.getElementById("start-button-fx");
+                            startButtonFX.play();
+                            setTimeout(function () {
+                                window.location.href = "clue1.html"
+                            }, 1000);
                         }
                         break;
                     case "p": //for debugging
-                        window.location.href = "clue1.html"
+                        var startButtonFX = document.getElementById("start-button-fx");
+                        startButtonFX.play();
+                        setTimeout(function () {
+                            window.location.href = "clue1.html"
+                        }, 1000);
                     default:
                         return;
                 }
@@ -172,6 +185,8 @@
         }
 
         function showClueFound() {
+            $("#scanner").get(0).pause();
+            $("#found").get(0).play();
             $('#scanning-text').html("Clue Found!")
         }
 
